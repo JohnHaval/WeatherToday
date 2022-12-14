@@ -99,7 +99,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="AnimStates\FallingSnow.gif" />
+    <Resource Include="AnimStates\Snow.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="AnimStates\Rain.gif" />
+    <Resource Include="AnimStates\RainStorm.gif" />
+    <Resource Include="AnimStates\SnowStorm.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

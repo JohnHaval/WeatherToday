@@ -6,23 +6,23 @@
         xmlns:gif="http://wpfanimatedgif.codeplex.com"
         xmlns:local="clr-namespace:WeatherToday"
         mc:Ignorable="d"
-        Title="Weather Today" MinHeight="450" MinWidth="600" Height="450" Width="600" WindowStartupLocation="CenterScreen">
-    <DockPanel>
+        Title="Weather Today" MinHeight="450" MinWidth="650" Height="450" Width="650" WindowStartupLocation="CenterScreen">
+    <DockPanel Background="#FFD3D3FF">
         <Menu DockPanel.Dock="Top" FontSize="14">
             <MenuItem x:Name="GetToday" Header="Получить за сегодня" ToolTip="Позволяет получить информацию о реальной погоде в Рязани."/>
             <MenuItem x:Name="GetRandom" Header="ГСЧ за сегодня" ToolTip="Позволяет задать данные сегодняшнего дня, какие могли бы быть."/>
         </Menu>
-        <GroupBox Header="Погода сегодня" DockPanel.Dock="Top" Margin="3" FontSize="14">
+        <GroupBox Header="Погода сегодня" DockPanel.Dock="Top" Margin="3" FontSize="14" Background="#7FD6D6D6">
             <Grid>
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
+                    <ColumnDefinition Width="Auto" MinWidth="164"/>
                 </Grid.ColumnDefinitions>
-                <Border CornerRadius="3" BorderThickness="1" BorderBrush="Gray" Margin="5">
+                <Border CornerRadius="3" BorderThickness="1" BorderBrush="Gray" Margin="5,5,5,5">
                     <Image x:Name="WeatherPictureState" Width="110" Height="110"/>
                 </Border>
-                <Border CornerRadius="3" BorderThickness="1" BorderBrush="Gray" Margin="5" Grid.Column="1">
+                <Border CornerRadius="3" BorderThickness="1" BorderBrush="Gray" Margin="5,5,5,5" Grid.Column="1">
                     <StackPanel Margin="5">
                         <StackPanel Orientation="Horizontal">
                             <Label Content="Время суток: "/>
@@ -40,13 +40,13 @@
                         </StackPanel>
                     </StackPanel>
                 </Border>
-                <Border CornerRadius="3" BorderThickness="1" BorderBrush="Gray" Margin="5" Grid.Column="2">
+                <Border CornerRadius="3" BorderThickness="1" BorderBrush="Gray" Margin="5,5,5,5" Grid.Column="2">
                     <Label Content="00:00" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="34"/>
                 </Border>
             </Grid>
         </GroupBox>
         <Border BorderBrush="LightGray" BorderThickness="2" Margin="3">
-            <Image gif:ImageBehavior.AnimatedSource="/AnimStates/FallingSnow.gif" gif:ImageBehavior.AutoStart="True" Stretch="UniformToFill"/>
+            <Image gif:ImageBehavior.AnimatedSource="/AnimStates/Snow.gif" gif:ImageBehavior.AutoStart="True" Stretch="UniformToFill"/>
         </Border>
     </DockPanel>
 </Window>
