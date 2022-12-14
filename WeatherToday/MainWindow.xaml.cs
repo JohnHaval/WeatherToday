@@ -24,5 +24,10 @@ namespace WeatherToday
         {
             InitializeComponent();
         }
+
+        private void StartMedia_Click(object sender, RoutedEventArgs e)
+        {
+            WeatherVideoState.Play();
+        }
     }
 }

@@ -7,10 +7,26 @@
         mc:Ignorable="d"
         Title="Weather Today" MinHeight="450" MinWidth="600" WindowStartupLocation="CenterScreen">
     <DockPanel>
-        <Menu>
-            <MenuItem Header="Получить за сегодня" ToolTip="Позволяет получить информацию"/>
-            <MenuItem Header="ГСЧ за сегодня" ToolTip="Позволяет задать данные сегодняшнего дня, какие могли бы быть."/>
+        <Menu DockPanel.Dock="Top" FontSize="14">
+            <MenuItem x:Name="GetToday" Header="Получить за сегодня" ToolTip="Позволяет получить информацию о реальной погоде в Рязани."/>
+            <MenuItem x:Name="GetRandom" Header="ГСЧ за сегодня" ToolTip="Позволяет задать данные сегодняшнего дня, какие могли бы быть."/>
+            <MenuItem x:Name="StartMedia" Header="Запуск видео" Click="StartMedia_Click"/>
         </Menu>
-        
+        <GroupBox Header="Погода сегодня" DockPanel.Dock="Top" Margin="3" FontSize="14">
+            <StackPanel Orientation="Horizontal">
+                <Border CornerRadius="3" BorderThickness="1" BorderBrush="Black">
+                    <Image x:Name="WeatherPictureState" Width="150" Height="150"/>
+                </Border>
+                <StackPanel Margin="3">
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Время суток: "/>
+                        <Label x:Name="TimeState" Content="N/A"/>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </GroupBox>
+        <Border BorderBrush="Black" BorderThickness="2">
+            <MediaElement Name="WeatherVideoState" Source="VideoStates/SimpleSnow.mp4" Height="200" Width="300" LoadedBehavior="Manual" UnloadedBehavior="Manual"/>
+        </Border>
     </DockPanel>
 </Window>
