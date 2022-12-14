@@ -3,14 +3,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
         xmlns:local="clr-namespace:WeatherToday"
         mc:Ignorable="d"
-        Title="Weather Today" MinHeight="450" MinWidth="600" WindowStartupLocation="CenterScreen">
+        Title="Weather Today" MinHeight="450" MinWidth="600" Height="450" Width="600" WindowStartupLocation="CenterScreen">
     <DockPanel>
         <Menu DockPanel.Dock="Top" FontSize="14">
             <MenuItem x:Name="GetToday" Header="Получить за сегодня" ToolTip="Позволяет получить информацию о реальной погоде в Рязани."/>
             <MenuItem x:Name="GetRandom" Header="ГСЧ за сегодня" ToolTip="Позволяет задать данные сегодняшнего дня, какие могли бы быть."/>
-            <MenuItem x:Name="StartMedia" Header="Запуск видео" Click="StartMedia_Click"/>
         </Menu>
         <GroupBox Header="Погода сегодня" DockPanel.Dock="Top" Margin="3" FontSize="14">
             <Grid>
@@ -46,7 +46,7 @@
             </Grid>
         </GroupBox>
         <Border BorderBrush="LightGray" BorderThickness="2" Margin="3">
-            <MediaElement Name="WeatherVideoState" Source="VideoStates/SimpleSnow.mp4" Height="200" Width="300" LoadedBehavior="Manual" UnloadedBehavior="Manual"/>
+            <Image gif:ImageBehavior.AnimatedSource="/AnimStates/FallingSnow.gif" gif:ImageBehavior.AutoStart="True" Stretch="UniformToFill"/>
         </Border>
     </DockPanel>
 </Window>
