@@ -13,19 +13,39 @@
             <MenuItem x:Name="StartMedia" Header="Запуск видео" Click="StartMedia_Click"/>
         </Menu>
         <GroupBox Header="Погода сегодня" DockPanel.Dock="Top" Margin="3" FontSize="14">
-            <StackPanel Orientation="Horizontal">
-                <Border CornerRadius="3" BorderThickness="1" BorderBrush="Black">
-                    <Image x:Name="WeatherPictureState" Width="150" Height="150"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Border CornerRadius="3" BorderThickness="1" BorderBrush="Gray" Margin="5">
+                    <Image x:Name="WeatherPictureState" Width="110" Height="110"/>
                 </Border>
-                <StackPanel Margin="3">
-                    <StackPanel Orientation="Horizontal">
-                        <Label Content="Время суток: "/>
-                        <Label x:Name="TimeState" Content="N/A"/>
+                <Border CornerRadius="3" BorderThickness="1" BorderBrush="Gray" Margin="5" Grid.Column="1">
+                    <StackPanel Margin="5">
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Время суток: "/>
+                            <Label x:Name="TimeState" Content="N/A"/>
+                        </StackPanel>
+                        <Separator/>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Состояние погоды: "/>
+                            <Label x:Name="WeatherState" Content="N/A"/>
+                        </StackPanel>
+                        <Separator/>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Интенсивность осадков: "/>
+                            <Label x:Name="WeatherStateDetails" Content="N/A"/>
+                        </StackPanel>
                     </StackPanel>
-                </StackPanel>
-            </StackPanel>
+                </Border>
+                <Border CornerRadius="3" BorderThickness="1" BorderBrush="Gray" Margin="5" Grid.Column="2">
+                    <Label Content="00:00" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="34"/>
+                </Border>
+            </Grid>
         </GroupBox>
-        <Border BorderBrush="Black" BorderThickness="2">
+        <Border BorderBrush="LightGray" BorderThickness="2" Margin="3">
             <MediaElement Name="WeatherVideoState" Source="VideoStates/SimpleSnow.mp4" Height="200" Width="300" LoadedBehavior="Manual" UnloadedBehavior="Manual"/>
         </Border>
     </DockPanel>
