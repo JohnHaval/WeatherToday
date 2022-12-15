@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
+using WeatherToday.CustomClasses;
 
 namespace WeatherToday
 {
@@ -23,6 +25,23 @@ namespace WeatherToday
         public MainWindow()
         {
             InitializeComponent();
+            Timer.Tick += Timer_Tick;
+            Timer.Interval = new TimeSpan(0,1,0);            
+        }
+        OpenWeather MainWeather = new OpenWeather();
+        private void Timer_Tick(object sender, EventArgs e)
+        {            
+            MainWeather = new OpenWeather();
+            MainWeather.GetWeatherToday();
+            DisplayWeather();
+        }
+        DispatcherTimer Timer = new DispatcherTimer();
+        private void DisplayWeather()//-------------------------------------Ввести русский язык. Прочитать TXT по установлению логики.
+        {
+            CurrentTime.Content = DateTime.Now.ToString("t");
+            WeatherState.Content = MainWeather.weather.main;
+            WeatherStateDetails.Content = MainWeather.weather.description;
+            WeatherState.Content = MainWeather.weather.main;
         }
     }
 }

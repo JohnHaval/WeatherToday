@@ -11,6 +11,7 @@ namespace WeatherToday.CustomClasses
 {
     public class OpenWeather
     {
+        public OpenWeather CurrentWeather { get; set; }
         [JsonProperty("base")]
         public string Base;
         public main main;
@@ -30,7 +31,7 @@ namespace WeatherToday.CustomClasses
                 }
             }
             response.Close();//? Is Need ?-------------Check this later
-
+            CurrentWeather = JsonConvert.DeserializeObject<OpenWeather>(answer);
         }
     }
 }

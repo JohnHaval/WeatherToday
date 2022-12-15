@@ -9,6 +9,7 @@
         Title="Weather Today" MinHeight="450" MinWidth="650" Height="450" Width="650" WindowStartupLocation="CenterScreen">
     <DockPanel Background="#FFD3D3FF">
         <Menu DockPanel.Dock="Top" FontSize="14">
+            <MenuItem Header="Автосинхронизация погоды" IsCheckable="True" BorderBrush="Black" BorderThickness="0.5"/>
             <MenuItem x:Name="GetToday" Header="Получить за сегодня" ToolTip="Позволяет получить информацию о реальной погоде в Рязани."/>
             <MenuItem x:Name="GetRandom" Header="ГСЧ за сегодня" ToolTip="Позволяет задать данные сегодняшнего дня, какие могли бы быть."/>
         </Menu>
@@ -20,10 +21,15 @@
                     <ColumnDefinition Width="Auto" MinWidth="164"/>
                 </Grid.ColumnDefinitions>
                 <Border CornerRadius="3" BorderThickness="1" BorderBrush="Gray" Margin="5,5,5,5">
-                    <Image x:Name="WeatherPictureState" Width="120" Height="110"/>
+                    <Image x:Name="WeatherPictureState" Width="120" Height="110" Source="http://openweathermap.org/img/wn/10d@2x.png"/>
                 </Border>
                 <Border CornerRadius="3" BorderThickness="1" BorderBrush="Gray" Margin="5,5,5,5" Grid.Column="1">
                     <StackPanel Margin="5">
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="Температура: "/>
+                            <Label x:Name="Temperature" Content="N/A"/>
+                        </StackPanel>
+                        <Separator/>
                         <StackPanel Orientation="Horizontal">
                             <Label Content="Время суток: "/>
                             <Label x:Name="TimeState" Content="N/A"/>
@@ -41,7 +47,7 @@
                     </StackPanel>
                 </Border>
                 <Border CornerRadius="3" BorderThickness="1" BorderBrush="Gray" Margin="5,5,5,5" Grid.Column="2">
-                    <Label Content="00:00" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="34"/>
+                    <Label x:Name="CurrentTime" Content="00:00" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="34"/>
                 </Border>
             </Grid>
         </GroupBox>
