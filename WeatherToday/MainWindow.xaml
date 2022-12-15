@@ -9,7 +9,7 @@
         Title="Weather Today" MinHeight="450" MinWidth="650" Height="450" Width="650" WindowStartupLocation="CenterScreen">
     <DockPanel Background="#FFD3D3FF">
         <Menu DockPanel.Dock="Top" FontSize="14">
-            <MenuItem Header="Автосинхронизация погоды" IsCheckable="True" BorderBrush="Black" BorderThickness="0.5"/>
+            <MenuItem Header="Автосинхронизация погоды" IsCheckable="True" BorderBrush="Black" BorderThickness="0.5" ToolTip="Каждую минуту получает прогноз погоды из OpenWeather"/>
             <MenuItem x:Name="GetToday" Header="Получить за сегодня" ToolTip="Позволяет получить информацию о реальной погоде в Рязани."/>
             <MenuItem x:Name="GetRandom" Header="ГСЧ за сегодня" ToolTip="Позволяет задать данные сегодняшнего дня, какие могли бы быть."/>
         </Menu>
