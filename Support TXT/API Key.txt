@@ -1,0 +1,3 @@
+cced05e23a8fd9054a38c1de61d639ea
+
+https://api.openweathermap.org/data/2.5/weather?q=Ryazan&appid=cced05e23a8fd9054a38c1de61d639ea
