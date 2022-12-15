@@ -47,10 +47,7 @@ namespace WeatherToday
         {
             var currentTime = DateTime.Now;
             CurrentTime.Content = currentTime.ToString("t");
-            if (currentTime.Hour >= 0 && currentTime.Hour <= 5) TimeState.Content = "Ночь";
-            if (currentTime.Hour >= 6 && currentTime.Hour <= 11) TimeState.Content = "Утро";
-            if (currentTime.Hour >= 12 && currentTime.Hour <= 17) TimeState.Content = "День";
-            if (currentTime.Hour >= 18 && currentTime.Hour <= 23) TimeState.Content = "Вечер";
+            TimeState.Content = StateRestrictions.GetTimeState(currentTime);
         }
     }
 }
