@@ -104,8 +104,8 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="AnimStates\Rain.gif" />
-    <Resource Include="AnimStates\RainStorm.gif" />
-    <Resource Include="AnimStates\SnowStorm.gif" />
+    <Resource Include="AnimStates\ExtremeRain.gif" />
+    <Resource Include="AnimStates\HeavySnow.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
