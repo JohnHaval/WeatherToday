@@ -21,7 +21,7 @@ namespace WeatherToday.CustomClasses
             request.Method = "POST";
             request.ContentType = "application/x-www-urlcoded";
             WebResponse response = request.GetResponse();
-            string answer = "";
+            string answer = "";//Answer of request
             using (Stream stream = response.GetResponseStream())
             {
                 using (StreamReader reader = new StreamReader(stream))
