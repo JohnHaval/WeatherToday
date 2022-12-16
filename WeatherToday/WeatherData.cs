@@ -13,16 +13,15 @@ namespace WeatherToday.CustomClasses
 {
     public class WeatherData
     {
-        public WeatherToday CurrentWeather { get; set; }
+        public WeatherToday CurrentWeather { get; private set; }
         public string IconState { get => $"http://openweathermap.org/img/wn/{CurrentWeather.weather[0].icon}@2x.png"; }
         public int Temperature { get; private set; }
         public string TimeState { get; private set; }
         public string WeatherState { get; private set; }
         public string FalloutState { get; private set; }
         public string DisplayPath { get; private set; }//Путь к GIF или картинкам
-        private string GetTimeState()
+        private string GetTimeState(DateTime currentTime)
         {
-            DateTime currentTime = new DateTime();
             if (currentTime.Hour >= 0 && currentTime.Hour <= 5) return "Ночь";
             if (currentTime.Hour >= 6 && currentTime.Hour <= 11) return "Утро";
             if (currentTime.Hour >= 12 && currentTime.Hour <= 17) return "День";
@@ -87,7 +86,7 @@ namespace WeatherToday.CustomClasses
         public void GetWeather()
         {
             GetWeatherToday();
-            TimeState = GetTimeState();
+            TimeState = GetTimeState(DateTime.Now);
             WeatherState = GetWeatherState();
             FalloutState = GetFalloutState();
         }

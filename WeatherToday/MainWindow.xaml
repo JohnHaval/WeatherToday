@@ -6,12 +6,12 @@
         xmlns:gif="http://wpfanimatedgif.codeplex.com"
         xmlns:local="clr-namespace:WeatherToday"
         mc:Ignorable="d"
-        Title="Weather Today" MinHeight="450" MinWidth="650" Height="450" Width="650" WindowStartupLocation="CenterScreen">
+        Title="Weather Today" MinHeight="450" MinWidth="650" Height="450" Width="650" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
     <DockPanel Background="#FFD3D3FF">
         <Menu DockPanel.Dock="Top" FontSize="14">
-            <MenuItem Header="Автосинхронизация погоды" IsCheckable="True" IsChecked="True" BorderBrush="Black" BorderThickness="0.5" ToolTip="Каждую минуту получает прогноз погоды из OpenWeather"/>
-            <MenuItem x:Name="GetToday" Header="Получить за сегодня" ToolTip="Позволяет получить информацию о реальной погоде в Рязани."/>
-            <MenuItem x:Name="GetRandom" Header="ГСЧ за сегодня" ToolTip="Позволяет задать данные сегодняшнего дня, какие могли бы быть."/>
+            <MenuItem x:Name="AutoSync" Header="Автосинхронизация погоды" IsCheckable="True" IsChecked="True" BorderBrush="Black" BorderThickness="0.5" ToolTip="Каждую минуту получает прогноз погоды из OpenWeather" Checked="AutoSync_Checked" Unchecked="AutoSync_Unchecked"/>
+            <MenuItem x:Name="GetToday" Header="Получить за сегодня" ToolTip="Позволяет получить информацию о реальной погоде в Рязани." Click="GetToday_Click"/>
+            <MenuItem x:Name="GetRandom" Header="ГСЧ за сегодня" ToolTip="Позволяет задать данные сегодняшнего дня, какие могли бы быть." Click="GetRandom_Click"/>
         </Menu>
         <GroupBox Header="Погода сегодня" DockPanel.Dock="Top" Margin="3" FontSize="14" Background="#7FD6D6D6">
             <Grid>
@@ -46,8 +46,8 @@
                         </StackPanel>
                     </StackPanel>
                 </Border>
-                <Border CornerRadius="3" BorderThickness="1" BorderBrush="Gray" Margin="5,5,5,5" Grid.Column="2">
-                    <Label x:Name="CurrentTime" Content="00:00" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="34"/>
+                <Border CornerRadius="3" BorderThickness="1" BorderBrush="Gray" Margin="5,5,5,5" Grid.Column="2" ToolTip="Последнее время получения погоды">
+                    <Label x:Name="LastTime" Content="00:00" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="34"/>
                 </Border>
             </Grid>
         </GroupBox>

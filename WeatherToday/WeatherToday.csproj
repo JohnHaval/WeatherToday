@@ -70,6 +70,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="RandomNumbersGenerator.cs" />
     <Compile Include="StructureClasses\main.cs" />
     <Compile Include="StructureClasses\WeatherToday.cs" />
     <Compile Include="WeatherData.cs" />

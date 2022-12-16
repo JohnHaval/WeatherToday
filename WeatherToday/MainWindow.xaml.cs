@@ -26,7 +26,7 @@ namespace WeatherToday
         {
             InitializeComponent();
             Timer.Tick += Timer_Tick;
-            Timer.Interval = new TimeSpan(0,1,0);
+            Timer.Interval = new TimeSpan(0, 1, 0);         
             Timer.IsEnabled = true;
         }
         WeatherData WeatherToday = new WeatherData();
@@ -34,7 +34,7 @@ namespace WeatherToday
         {
             WeatherToday.GetWeather();
             IconState.Source = GetSourceIconState();
-            CurrentTime.Content = DateTime.Now.ToString("t");
+            LastTime.Content = DateTime.Now.ToString("t");
             Temperature.Content = WeatherToday.Temperature;
             TimeState.Content = WeatherToday.TimeState;
             WeatherState.Content = WeatherToday.WeatherState;
@@ -48,6 +48,31 @@ namespace WeatherToday
             imageState.UriSource = new Uri(WeatherToday.IconState);
             imageState.EndInit();
             return imageState;
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            Timer_Tick(sender, e);
+        }
+
+        private void AutoSync_Checked(object sender, RoutedEventArgs e)
+        {
+            Timer.IsEnabled = true;
+        }
+
+        private void AutoSync_Unchecked(object sender, RoutedEventArgs e)
+        {
+            Timer.IsEnabled = false;
+        }
+
+        private void GetToday_Click(object sender, RoutedEventArgs e)
+        {
+            Timer_Tick(sender, e);
+        }
+
+        private void GetRandom_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
