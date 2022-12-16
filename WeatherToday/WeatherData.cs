@@ -86,7 +86,15 @@ namespace WeatherToday.CustomClasses
         public void GetWeather()
         {
             GetWeatherToday();
-            TimeState = GetTimeState(DateTime.Now);
+            GetWeather(DateTime.Now);
+        }
+        /// <summary>
+        /// Использовать для ГСЧ или самостоятельного формирования по дате.
+        /// </summary>
+        /// <param name="dateTime"></param>
+        public void GetWeather(DateTime dateTime)
+        {
+            TimeState = GetTimeState(dateTime);
             WeatherState = GetWeatherState();
             FalloutState = GetFalloutState();
         }

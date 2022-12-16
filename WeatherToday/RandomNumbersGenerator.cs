@@ -37,9 +37,13 @@ namespace WeatherToday
         }
         public static void GetRandomWeather()
         {
-            var time = (DateTime)new TimeSpan(0, GetRandom(0, 24), GetRandom(0, 60));
-            
+            var time = Convert.ToDateTime(new TimeSpan(0, GetRandom(0, 24), GetRandom(0, 60)));
+            IntoWeatherRandom();
+            WeatherRandom.GetWeather(time);
         }
+        /// <summary>
+        /// Производит рандомное занесение основной (необходимой) информации для работы формирования значений в классе WeatherData.
+        /// </summary>
         private static void IntoWeatherRandom()
         {
             int temp = GetRandom(-30, 30);
@@ -50,8 +54,8 @@ namespace WeatherToday
             {
                 string rndFalloutState = FalloutStates[4];//"rain and snow"//Используется для удовлетворения правильности рандома
                 if (temp < -1 && temp > 2)
-                    WeatherRandom.CurrentWeather.weather[0].description =
-                        rndFalloutState = FalloutStates[GetRandom(0, 4)];
+                    rndFalloutState = FalloutStates[GetRandom(0, 4)];
+                WeatherRandom.CurrentWeather.weather[0].description = rndFalloutState;
             }
             else WeatherRandom.CurrentWeather.weather[0].description = "Отсутствует";
         }
