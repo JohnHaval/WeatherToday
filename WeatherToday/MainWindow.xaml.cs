@@ -26,28 +26,28 @@ namespace WeatherToday
         {
             InitializeComponent();
             Timer.Tick += Timer_Tick;
-            Timer.Interval = new TimeSpan(0,1,0);            
+            Timer.Interval = new TimeSpan(0,1,0);
+            Timer.IsEnabled = true;
         }
-        OpenWeather MainWeather = new OpenWeather();
+        WeatherData WeatherToday = new WeatherData();
         private void Timer_Tick(object sender, EventArgs e)
-        {            
-            MainWeather = new OpenWeather();
-            MainWeather.GetWeatherToday();
-            DisplayWeather();
+        {
+            WeatherToday.GetWeather();
+            IconState.Source = GetSourceIconState();
+            CurrentTime.Content = DateTime.Now.ToString("t");
+            Temperature.Content = WeatherToday.Temperature;
+            TimeState.Content = WeatherToday.TimeState;
+            WeatherState.Content = WeatherToday.WeatherState;
+            FalloutState.Content = WeatherToday.FalloutState;
         }
         DispatcherTimer Timer = new DispatcherTimer();
-        private void DisplayWeather()//-------------------------------------Ввести русский язык. Прочитать TXT по установлению логики.
+        private BitmapImage GetSourceIconState()
         {
-            Temperature.Content = MainWeather.main.temp;            
-            WeatherState.Content = MainWeather.weather.main;
-            WeatherStateDetails.Content = MainWeather.weather.description;
-            DisplayTimeState();
-        }
-        private void DisplayTimeState()
-        {
-            var currentTime = DateTime.Now;
-            CurrentTime.Content = currentTime.ToString("t");
-            TimeState.Content = StateRestrictions.GetTimeState(currentTime);
+            BitmapImage imageState = new BitmapImage();
+            imageState.BeginInit();
+            imageState.UriSource = new Uri(WeatherToday.IconState);
+            imageState.EndInit();
+            return imageState;
         }
     }
 }

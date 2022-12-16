@@ -9,7 +9,7 @@
         Title="Weather Today" MinHeight="450" MinWidth="650" Height="450" Width="650" WindowStartupLocation="CenterScreen">
     <DockPanel Background="#FFD3D3FF">
         <Menu DockPanel.Dock="Top" FontSize="14">
-            <MenuItem Header="Автосинхронизация погоды" IsCheckable="True" BorderBrush="Black" BorderThickness="0.5" ToolTip="Каждую минуту получает прогноз погоды из OpenWeather"/>
+            <MenuItem Header="Автосинхронизация погоды" IsCheckable="True" IsChecked="True" BorderBrush="Black" BorderThickness="0.5" ToolTip="Каждую минуту получает прогноз погоды из OpenWeather"/>
             <MenuItem x:Name="GetToday" Header="Получить за сегодня" ToolTip="Позволяет получить информацию о реальной погоде в Рязани."/>
             <MenuItem x:Name="GetRandom" Header="ГСЧ за сегодня" ToolTip="Позволяет задать данные сегодняшнего дня, какие могли бы быть."/>
         </Menu>
@@ -21,7 +21,7 @@
                     <ColumnDefinition Width="Auto" MinWidth="164"/>
                 </Grid.ColumnDefinitions>
                 <Border CornerRadius="3" BorderThickness="1" BorderBrush="Gray" Margin="5,5,5,5">
-                    <Image x:Name="WeatherPictureState" Width="120" Height="110" Source="http://openweathermap.org/img/wn/10d@2x.png"/>
+                    <Image x:Name="IconState" Width="120" Height="110" Source="http://openweathermap.org/img/wn/04d@2x.png"/>
                 </Border>
                 <Border CornerRadius="3" BorderThickness="1" BorderBrush="Gray" Margin="5,5,5,5" Grid.Column="1">
                     <StackPanel Margin="5">
@@ -42,7 +42,7 @@
                         <Separator/>
                         <StackPanel Orientation="Horizontal">
                             <Label Content="Интенсивность осадков: "/>
-                            <Label x:Name="WeatherStateDetails" Content="N/A"/>
+                            <Label x:Name="FalloutState" Content="N/A"/>
                         </StackPanel>
                     </StackPanel>
                 </Border>
@@ -52,7 +52,7 @@
             </Grid>
         </GroupBox>
         <Border BorderBrush="LightGray" BorderThickness="2" Margin="3">
-            <Image gif:ImageBehavior.AnimatedSource="/AnimStates/Snow.gif" gif:ImageBehavior.AutoStart="True" Stretch="UniformToFill"/>
+            <Image x:Name="DisplayState" gif:ImageBehavior.AnimatedSource="/AnimStates/Clouds.jpg" gif:ImageBehavior.AutoStart="True" Stretch="UniformToFill"/>
         </Border>
     </DockPanel>
 </Window>

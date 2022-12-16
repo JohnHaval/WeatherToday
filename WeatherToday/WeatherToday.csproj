@@ -70,9 +70,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="CustomClasses\main.cs" />
-    <Compile Include="CustomClasses\OpenWeather.cs" />
-    <Compile Include="CustomClasses\weather.cs" />
+    <Compile Include="StructureClasses\main.cs" />
+    <Compile Include="StructureClasses\WeatherToday.cs" />
+    <Compile Include="WeatherData.cs" />
+    <Compile Include="StructureClasses\weather.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -112,6 +113,13 @@
     <Resource Include="AnimStates\Rain.gif" />
     <Resource Include="AnimStates\ExtremeRain.gif" />
     <Resource Include="AnimStates\HeavySnow.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="AnimStates\RainAndSnow.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="AnimStates\Clear.jpg" />
+    <Resource Include="AnimStates\Clouds.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
