@@ -1,13 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input.StylusPlugIns;
 
 namespace WeatherToday.CustomClasses
 {
@@ -26,7 +20,7 @@ namespace WeatherToday.CustomClasses
             if (currentTime.Hour >= 6 && currentTime.Hour <= 11) return "Утро";
             if (currentTime.Hour >= 12 && currentTime.Hour <= 17) return "День";
             return "Вечер";
-        }   
+        }
         private string GetWeatherState()
         {
             string main = CurrentWeather.weather[0].main;
@@ -62,7 +56,7 @@ namespace WeatherToday.CustomClasses
             if (description.Contains("snow"))
             {
                 DisplayPath = "/AnimStates/Snow.gif";
-                return "Снежная метель";                
+                return "Снежная метель";
             }
             if (description == "extreme rain" || description.ToLower().Contains("thunderstorm") || (description.Contains("shower") && description.Contains("rain")))
             {
@@ -75,7 +69,7 @@ namespace WeatherToday.CustomClasses
                 return "Мелкий дождь";
             }
             return "Отсутствует";//Зависит от данных из OpenWeather
-        }        
+        }
         private bool CheckMediumTemperature()
         {
             Temperature = Convert.ToInt32(CurrentWeather.main.temp);

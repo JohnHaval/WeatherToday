@@ -1,17 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using WeatherToday.CustomClasses;
 
 namespace WeatherToday
 {
     public static class RandomNumbersGenerator
     {
-        public static WeatherData WeatherRandom = new WeatherData(); 
+        public static WeatherData WeatherRandom = new WeatherData();
         public static DateTime RandomTime { get; private set; }
-        private static string[] WeatherStates { get => GetWeatherStates(); }     
+        private static string[] WeatherStates { get => GetWeatherStates(); }
         private static string[] GetWeatherStates()
         {
             var weatherStates = new string[7];
@@ -32,7 +28,7 @@ namespace WeatherToday
             falloutStates.SetValue("Snow", 1);
             falloutStates.SetValue("thunderstorm", 2);
             falloutStates.SetValue("rain", 3);
-            falloutStates.SetValue("rain and snow", 4);            
+            falloutStates.SetValue("rain and snow", 4);
             return falloutStates;
         }
         public static int GetRandom(int min, int max)
@@ -59,7 +55,7 @@ namespace WeatherToday
             WeatherRandom.CurrentWeather.main = new main();
             WeatherRandom.CurrentWeather.main.temp = temp;
             temp = Convert.ToInt32(WeatherRandom.CurrentWeather.main.temp);
-            string rndWeatherState = WeatherStates[GetRandom(0, 7)];            
+            string rndWeatherState = WeatherStates[GetRandom(0, 7)];
             WeatherRandom.CurrentWeather.weather = new weather[1];
             WeatherRandom.CurrentWeather.weather.SetValue(new weather(), 0);
             WeatherRandom.CurrentWeather.weather[0].main = rndWeatherState;
