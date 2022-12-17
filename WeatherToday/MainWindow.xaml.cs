@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 using WeatherToday.CustomClasses;
+using WpfAnimatedGif;
 
 namespace WeatherToday
 {
@@ -33,7 +34,8 @@ namespace WeatherToday
         private void Timer_Tick(object sender, EventArgs e)
         {
             WeatherToday.GetWeather();
-            IconState.Source = GetSourceIconState();
+            IconState.Source = GetIconState();
+            GetDisplayState(false);
             LastTime.Content = DateTime.Now.ToString("t");
             Temperature.Content = WeatherToday.Temperature;
             TimeState.Content = WeatherToday.TimeState;
@@ -41,13 +43,23 @@ namespace WeatherToday
             FalloutState.Content = WeatherToday.FalloutState;
         }
         DispatcherTimer Timer = new DispatcherTimer();
-        private BitmapImage GetSourceIconState()
+        private BitmapImage GetIconState()
         {
             BitmapImage imageState = new BitmapImage();
             imageState.BeginInit();
             imageState.UriSource = new Uri(WeatherToday.IconState);
             imageState.EndInit();
+            ImageBehavior.SetAnimatedSource(DisplayState, imageState);
             return imageState;
+        }
+        private void GetDisplayState(bool isRandom)
+        {
+            BitmapImage imageState = new BitmapImage();
+            imageState.BeginInit();
+            if (!isRandom) imageState.UriSource = new Uri(WeatherToday.DisplayPath, UriKind.RelativeOrAbsolute);
+            else imageState.UriSource = new Uri(RandomNumbersGenerator.WeatherRandom.DisplayPath, UriKind.RelativeOrAbsolute);
+            imageState.EndInit();
+            ImageBehavior.SetAnimatedSource(DisplayState, imageState);
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -72,7 +84,14 @@ namespace WeatherToday
 
         private void GetRandom_Click(object sender, RoutedEventArgs e)
         {
-
+            RandomNumbersGenerator.GetRandomWeather();
+            IconState.Source = GetIconState();
+            GetDisplayState(true);
+            LastTime.Content = RandomNumbersGenerator.RandomTime.ToString("t");
+            Temperature.Content = RandomNumbersGenerator.WeatherRandom.Temperature;
+            TimeState.Content = RandomNumbersGenerator.WeatherRandom.TimeState;
+            WeatherState.Content = RandomNumbersGenerator.WeatherRandom.WeatherState;
+            FalloutState.Content = RandomNumbersGenerator.WeatherRandom.FalloutState;
         }
     }
 }

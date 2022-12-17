@@ -13,7 +13,7 @@ namespace WeatherToday.CustomClasses
 {
     public class WeatherData
     {
-        public WeatherToday CurrentWeather { get; private set; }
+        public WeatherToday CurrentWeather { get; set; }
         public string IconState { get => $"http://openweathermap.org/img/wn/{CurrentWeather.weather[0].icon}@2x.png"; }
         public int Temperature { get; private set; }
         public string TimeState { get; private set; }
@@ -40,7 +40,11 @@ namespace WeatherToday.CustomClasses
                 DisplayPath = "/AnimStates/Clouds.jpg";
                 return "Облачно";
             }
-            return "Осадки";
+            if (main == "Snow" || main == "Rain" || main == "Drizzle" || main == "Thunderstorm")
+            {
+                return "Осадки";
+            }
+            return "Атмосферное явление";
         }
         private string GetFalloutState()
         {
@@ -60,7 +64,7 @@ namespace WeatherToday.CustomClasses
                 DisplayPath = "/AnimStates/Snow.gif";
                 return "Снежная метель";                
             }
-            if (description == "extreme rain" || description.Contains("thunderstorm") || (description.Contains("shower") && description.Contains("rain")))
+            if (description == "extreme rain" || description.ToLower().Contains("thunderstorm") || (description.Contains("shower") && description.Contains("rain")))
             {
                 DisplayPath = "/AnimStates/ExtremeRain.gif";
                 return "Дождевой ливень";
@@ -70,7 +74,6 @@ namespace WeatherToday.CustomClasses
                 DisplayPath = "/AnimStates/Rain.gif";
                 return "Мелкий дождь";
             }
-            DisplayPath = "/AnimStates/Clouds.jpg";//Используется для отображения "чего-либо", чтобы заполнить фон, если при получении данных возникнут изменения.
             return "Отсутствует";//Зависит от данных из OpenWeather
         }        
         private bool CheckMediumTemperature()
@@ -80,7 +83,7 @@ namespace WeatherToday.CustomClasses
             return false;
         }
         /// <summary>
-        /// Отвечает за полное формирование погоды последовательно. Результаты в свойствах!
+        /// Отвечает за полное формирование погоды последовательно. Результаты в свойствах! Используется текущие дата и время.
         /// </summary>
         /// <returns></returns>
         public void GetWeather()
