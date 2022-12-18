@@ -23,7 +23,7 @@ namespace WeatherToday
         private void Timer_Tick(object sender, EventArgs e)
         {
             WeatherToday.GetWeather();
-            IconState.Source = GetIconState();
+            IconState.Source = GetIconState(false);
             GetDisplayState(false);
             LastTime.Content = DateTime.Now.ToString("t");
             Temperature.Content = WeatherToday.Temperature;
@@ -32,11 +32,12 @@ namespace WeatherToday
             FalloutState.Content = WeatherToday.FalloutState;
         }
         DispatcherTimer Timer = new DispatcherTimer();
-        private BitmapImage GetIconState()
+        private BitmapImage GetIconState(bool isRandom)
         {
             BitmapImage imageState = new BitmapImage();
             imageState.BeginInit();
-            imageState.UriSource = new Uri(WeatherToday.IconState);
+            if (!isRandom) imageState.UriSource = new Uri(WeatherToday.IconState);
+            else imageState.UriSource = new Uri(RandomNumbersGenerator.WeatherRandom.IconState);
             imageState.EndInit();
             ImageBehavior.SetAnimatedSource(DisplayState, imageState);
             return imageState;
@@ -74,7 +75,7 @@ namespace WeatherToday
         private void GetRandom_Click(object sender, RoutedEventArgs e)
         {
             RandomNumbersGenerator.GetRandomWeather();
-            IconState.Source = GetIconState();
+            IconState.Source = GetIconState(true);
             GetDisplayState(true);
             LastTime.Content = RandomNumbersGenerator.RandomTime.ToString("t");
             Temperature.Content = RandomNumbersGenerator.WeatherRandom.Temperature;

@@ -38,6 +38,7 @@ namespace WeatherToday.CustomClasses
             {
                 return "Осадки";
             }
+            DisplayPath = "/AnimStates/Clouds.jpg";
             return "Атмосферное явление";
         }
         private string GetFalloutState()
@@ -53,7 +54,7 @@ namespace WeatherToday.CustomClasses
                 DisplayPath = "/AnimStates/HeavySnow.gif";
                 return "Снежная буря";
             }
-            if (description.Contains("snow"))
+            if (description.ToLower().Contains("snow"))
             {
                 DisplayPath = "/AnimStates/Snow.gif";
                 return "Снежная метель";
