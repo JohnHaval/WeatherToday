@@ -110,7 +110,7 @@ namespace WeatherToday.CustomClasses
                     answer = reader.ReadToEnd();
                 }
             }
-            response.Close();//? Is Need ?-------------Check this later
+            response.Close();
             CurrentWeather = JsonConvert.DeserializeObject<WeatherToday>(answer);
         }
     }
