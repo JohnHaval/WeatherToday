@@ -82,5 +82,19 @@ namespace WeatherToday
             WeatherState.Content = RandomNumbersGenerator.WeatherRandom.WeatherState;
             FalloutState.Content = RandomNumbersGenerator.WeatherRandom.FalloutState;
         }
+
+        private void Help_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Программа позволяет выполнять следующее:\n" +
+                "- отображать информацию о погоде и времени суток в Рязанской области;\n" +
+                "- автосинхронизация получения погоды позволяет получить погоду на текущий момент каждую минуту;\n" +
+                "- состояние погоды отображается на картинках или GIF", "Справка", MessageBoxButton.OK, MessageBoxImage.Question);
+        }
+
+        private void AboutProgram_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Разработчиком программы является студент группы ИСП-41 Лопаткин Сергей\n" +
+                "GitHub.Name=JohnHaval(Ранее - HaproBishop)", "О программе", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
     }
 }
