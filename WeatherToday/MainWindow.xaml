@@ -10,14 +10,14 @@
     <DockPanel Background="#FFD3D3FF">
         <Menu DockPanel.Dock="Top" FontSize="14">
             <MenuItem x:Name="AutoSync" Header="Автосинхронизация погоды" IsCheckable="True" IsChecked="True" BorderBrush="Black" BorderThickness="0.5" ToolTip="Каждую минуту получает прогноз погоды из OpenWeather" Checked="AutoSync_Checked" Unchecked="AutoSync_Unchecked"/>
-            <MenuItem x:Name="GetToday" Header="Получить за сегодня" ToolTip="Позволяет получить информацию о реальной погоде в Рязани." Click="GetToday_Click"/>
-            <MenuItem x:Name="GetRandom" Header="ГСЧ за сегодня" ToolTip="Позволяет задать данные сегодняшнего дня, какие могли бы быть." Click="GetRandom_Click"/>
+            <MenuItem x:Name="GetToday" Header="Получить погоду" ToolTip="Позволяет получить информацию о реальной погоде в Рязанской области." Click="GetToday_Click"/>
+            <MenuItem x:Name="GetRandom" Header="ГСЧ погоды" ToolTip="Позволяет получить случайные данные погоды, какие могли бы быть вообще." Click="GetRandom_Click"/>
             <MenuItem Header="Справка">
-                <MenuItem x:Name="Help" Header="Посмотреть справку"/>
-                <MenuItem x:Name="AboutProgram" Header="О программе"/>
+                <MenuItem x:Name="Help" Header="Посмотреть справку" Click="Help_Click"/>
+                <MenuItem x:Name="AboutProgram" Header="О программе" Click="AboutProgram_Click"/>
             </MenuItem>
         </Menu>
-        <GroupBox Header="Погода сегодня" DockPanel.Dock="Top" Margin="3" FontSize="14" Background="#7FD6D6D6">
+        <GroupBox Header="Погода" DockPanel.Dock="Top" Margin="3" FontSize="14" Background="#7FD6D6D6">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
