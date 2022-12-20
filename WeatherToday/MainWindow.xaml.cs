@@ -22,7 +22,12 @@ namespace WeatherToday
         WeatherData WeatherToday = new WeatherData();
         private void Timer_Tick(object sender, EventArgs e)
         {
-            WeatherToday.GetWeather();
+            try
+            {
+                WeatherToday.GetWeather();
+            }
+            catch { return; }
+            if (WeatherToday.CurrentWeather == null) return;
             IconState.Source = GetIconState(false);
             GetDisplayState(false);
             LastTime.Content = DateTime.Now.ToString("t");
