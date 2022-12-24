@@ -99,8 +99,9 @@ namespace WeatherToday.CustomClasses
         private void GetWeatherToday()
         {
             WebRequest request = WebRequest.Create("https://api.openweathermap.org/data/2.5/weather?q=Ryazan&appid=cced05e23a8fd9054a38c1de61d639ea");
-            request.Method = "POST";
+            request.Method = "POST";            
             request.ContentType = "application/x-www-urlcoded";
+            request.Timeout = 1500;
             WebResponse response = request.GetResponse();
             string answer = "";//Answer of request
             using (Stream stream = response.GetResponseStream())
